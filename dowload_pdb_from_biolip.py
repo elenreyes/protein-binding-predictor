@@ -71,7 +71,7 @@ with gzip.open(BIOLIP_FILE, "rt") as f:
             "lig_resnum": lig_resnum,
         })
 # Dataset = 500 random PDB from BioLip
-MAX_PDBS = 500
+MAX_PDBS = 2000
 pdb_ids = list(pdb_ids)  # convertir el set a lista
 pdb_sample = random.sample(pdb_ids, min(MAX_PDBS, len(pdb_ids)))
 print(f"Selected {len(pdb_sample)} PDBs randomly for download")
