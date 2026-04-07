@@ -1,0 +1,24 @@
+
+══════════════════════════════════════════════════
+RESULTS ON TEST SET  [v1]
+══════════════════════════════════════════════════
+Threshold              : 0.406
+ROC-AUC                : 0.7867
+AUC-PR                 : 0.1770
+Recall @ Precision≥0.5 : 0.0391
+Sensitivity (BS recall): 0.3896
+Specificity            : 0.9086
+
+              precision    recall  f1-score   support
+
+  no binding       0.97      0.91      0.94    192500
+binding site       0.16      0.39      0.23      8801
+
+    accuracy                           0.89    201301
+   macro avg       0.57      0.65      0.58    201301
+weighted avg       0.93      0.89      0.91    201301
+
+Confusion matrix:
+  TN=174912  FP=17588
+  FN=5372  TP=3429
+══════════════════════════════════════════════════

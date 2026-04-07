@@ -1,0 +1,6 @@
+#!/home/nuria/Documents/SBI/Project_1/pyt-sbi-project-env/bin/python3.12
+import sys
+from charset_normalizer.cli import cli_detect
+if __name__ == '__main__':
+    sys.argv[0] = sys.argv[0].removesuffix('.exe')
+    sys.exit(cli_detect())

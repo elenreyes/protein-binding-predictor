@@ -16,6 +16,8 @@ The training data comes from [BioLiP](https://zhanggroup.org/BioLiP/), a curated
 ### Python packages
 conda install -c conda-forge numpy pandas scipy scikit-learn biopython tqdm requests matplotlib joblib dssp freesasa
 
+There is also `requirements.txt` file with all the necessary libraries.
+
 ### Visualization
 - [PyMOL](https://pymol.org/) — to open the generated `.pml` scripts
  
@@ -186,7 +188,11 @@ Using `predict.py --pdb` directly is cleaner and more explicit, prefer it when y
 ---
  
 ## Usage
- 
+
+There is a `setup.sh` for linux users to install the necessary packages and create the environment. 
+
+To execute the full pipeline, linux user can do `pipeline.sh`, though it's important to take into account that it may take about 6 ours to complete.
+
 ### Full pipeline from scratch
  
 ```bash
@@ -214,7 +220,10 @@ python predict.py --pdb my_protein.pdb
  
 # Predict
 python predict.py --pdb 1hsg.pdb --threshold 0.5
- 
+
+Option 2 is use `predict.sh` plus the arguments to run the command as well.
+
+
 # Open in PyMOL
 pymol results/predictions_1hsg.pml
 
@@ -233,6 +242,13 @@ pymol results/predictions_1hsg.pml
  
 The protein appears as a grey cartoon. Predicted binding residues are colored red/orange/yellow by confidence level and shown as sticks with a transparent surface. The original ligand (if present in the PDB) appears in green for visual comparison. PyMOL automatically zooms into the predicted binding region.
  
+
+## Easy Predict & Visualization
+
+For linux user, there is a file named `setup.sh` to intall and create the virtual environment to run the code. Afterwards, use the predict.py command to predict your protein's binding site. 
+Another option is to run: python `binding_site_gui.py`, which opens a little interface in which you can choose the protein from your files to predict, and it opens PyMOL once predicted if intalled and in path (your own path can be added to `binding_site_gui.py` if not in there)
+
+
 ---
  
 ## Model Performance  -> change parameters (those are from cluster approach model)
@@ -241,23 +257,33 @@ Trained on ~2000 PDBs selected by chance from BioLiP:
  
 | Metric | Value |
 |--------|-------|
-| ROC-AUC (test) | 0.782 |
-| AUC-PR (test) | 0.181 |
-| Binding site recall | 37% |
-| Binding site precision | 18% |
+| ROC-AUC (test) | 0.7867 |
+| AUC-PR (test) | 0.1770 |
+| Binding site recall | 35.8% |
+| Binding site precision | 19.7% |
 | Dataset balance | 5.9% positive / 94.1% negative |
-| Neg/pos ratio | 16.0x |
+| Neg/pos ratio | 10.0x |
  
 Most informative features (by correlation with binding label):
  
-| Feature | Correlation | Biological meaning |
-|---------|-------------|-------------------|
-| bfactor | 0.072 | Binding sites are more rigid (lower B-factor) |
-| aromatic | 0.058 | Aromatic residues are enriched in binding pockets |
-| vsAromatic | 0.058 | Atomic-level aromaticity confirms the above |
-| negCharge | 0.045 | Negative charges frequent in binding interfaces |
-| protrusion | 0.041 | Pocket geometry — less exposed means more buried |
- 
+| Feature               | Correlation | Biological meaning                                           |
+|-----------------------|------------|--------------------------------------------------------------|
+| aromatic              | 0.054      | Aromatic residues are enriched in binding pockets           |
+| bfactor               | 0.053      | Binding sites are more rigid (lower B-factor)               |
+| vsAromatic            | 0.053      | Atomic-level aromaticity confirms the above                 |
+| protrusion            | 0.042      | Pocket geometry — less exposed means more buried            |
+| hDonorAtoms           | 0.036      | Hydrogen donor atoms contribute to binding                  |
+| acidic                | 0.030      | Acidic residues frequent in binding interfaces              |
+| negCharge             | 0.030      | Negative charges frequent in binding interfaces             |
+| aliphatic             | 0.029      | Aliphatic residues contribute to hydrophobic interactions   |
+| ss_coil               | 0.029      | Coil regions often occur near binding sites                 |
+| atomicHydrophobicity  | 0.027      | Local hydrophobicity favors binding                          |
+| vsAnion               | 0.027      | Atomic-level negative charge localization contributes to binding |
+| sulfur                | 0.027      | Sulfur-containing residues may form stabilizing interactions |
+| polar                 | 0.026      | Polar residues contribute to hydrogen bonding at interfaces |
+| vsHydrophobic         | 0.025      | Atomic-level hydrophobicity supports pocket interactions    |
+| sasa_relative         | 0.023      | Relative solvent accessibility — buried residues more likely to bind |
+
 Performance improves substantially with more training data. Recommended minimum: 2000 PDBs.
  
 ---
