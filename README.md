@@ -21,7 +21,9 @@ conda install -c conda-forge numpy pandas scipy scikit-learn biopython tqdm requ
  
  
 ## Project Structure
-´´´
+
+
+
 project/
 │
 ├── BioLip_nr.txt.gz              # BioLiP dataset (download separately)
@@ -56,7 +58,9 @@ project/
     ├── confusion_matrix.png      # Confusion matrix
     ├── predictions_PDBID.csv     # Per-residue binding probabilities
     └── predictions_PDBID.pml     # PyMOL visualization script
-´´´
+
+
+
 ---
  
 ## Pipeline
