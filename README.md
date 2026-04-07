@@ -25,7 +25,7 @@ There is also `requirements.txt` file with all the necessary libraries.
 ## Project Structure
 
 
-
+```
 project/
 │
 ├── BioLip_nr.txt.gz              # BioLiP dataset (download separately)
@@ -61,7 +61,7 @@ project/
     ├── predictions_PDBID.csv     # Per-residue binding probabilities
     └── predictions_PDBID.pml     # PyMOL visualization script
 
-
+```
 
 ---
  
@@ -221,7 +221,7 @@ python predict.py --pdb my_protein.pdb
 # Predict
 python predict.py --pdb 1hsg.pdb --threshold 0.5
 
-Option 2 is use `predict.sh` plus the arguments to run the command as well.
+Option 2 is to use `predict.sh` plus the arguments to run the command as well.
 
 
 # Open in PyMOL
@@ -245,11 +245,12 @@ The protein appears as a grey cartoon. Predicted binding residues are colored re
 
 ## Easy Predict & Visualization
 
-For linux user, there is a file named `setup.sh` to intall and create the virtual environment to run the code. Afterwards, use the predict.py command to predict your protein's binding site. 
+For linux users, there is a file named `setup.sh` to intall and create the virtual environment to run the code. Afterwards, use the predict.py command to predict your protein's binding site. 
 Another option is to run: python `binding_site_gui.py`, which opens a little interface in which you can choose the protein from your files to predict, and it opens PyMOL once predicted if intalled and in path (your own path can be added to `binding_site_gui.py` if not in there)
 
 # Google Colab
 There is also a notebook available in google colab to run the entire pipeline or only the prediction part for easier access for windows an MacOS systems.
+
 https://colab.research.google.com/drive/1xriRgoo6oG_oeqS0RROTu-66Zj6Jhvs-?usp=sharing
 
 ---
