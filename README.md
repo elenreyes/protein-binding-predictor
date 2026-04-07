@@ -248,6 +248,9 @@ The protein appears as a grey cartoon. Predicted binding residues are colored re
 For linux user, there is a file named `setup.sh` to intall and create the virtual environment to run the code. Afterwards, use the predict.py command to predict your protein's binding site. 
 Another option is to run: python `binding_site_gui.py`, which opens a little interface in which you can choose the protein from your files to predict, and it opens PyMOL once predicted if intalled and in path (your own path can be added to `binding_site_gui.py` if not in there)
 
+# Google Colab
+There is also a notebook available in google colab to run the entire pipeline or only the prediction part for easier access for windows an MacOS systems.
+https://colab.research.google.com/drive/1xriRgoo6oG_oeqS0RROTu-66Zj6Jhvs-?usp=sharing
 
 ---
  
@@ -291,8 +294,8 @@ Performance improves substantially with more training data. Recommended minimum:
 ## Known Limitations
  
 - Small dataset: 2000 PDBs is well below the recommended minimum for this task. P2Rank uses 4000+ structures. Increasing `MAX_PDBS` in `download_biolip.py` is the single most impactful improvement available.
-- High false positive rate: Precision at binding sites is ~18% — for every 100 residues predicted as binding site, ~82 are false positives. Use a higher threshold (`--threshold 0.6` or `0.7`) in `predict.py` to reduce false positives at the cost of lower recall.
+- High false positive rate: Precision at binding sites is ~19% — for every 100 residues predicted as binding site, ~82 are false positives. Use a higher threshold (`--threshold 0.6` or `0.7`) in `predict.py` to reduce false positives at the cost of lower recall.
 - DSSP failures: DSSP fails silently on ~5-10% of PDBs with discontinuous chains and returns default values (`ss_coil=1`, `bfactor=0`), adding noise to secondary structure features.
 - No evolutionary features: PSSM and conservation scores (among the most informative features in the literature) are not implemented due to computational cost. Adding them would require PSI-BLAST or ConSurf.
 - Residue-level prediction: The model predicts at residue level, whereas P2Rank uses solvent-accessible surface points, which gives finer spatial resolution and better pocket localization.
-- CV vs test gap: The difference between CV ROC-AUC (~0.92) and test ROC-AUC (0.782) reflects genuine overfitting to the small training set, not a methodological error — the CV correctly uses `GroupKFold`.
+- CV vs test gap: The difference between CV ROC-AUC (~0.92) and test ROC-AUC (0.7867) reflects genuine overfitting to the small training set, not a methodological error — the CV correctly uses `GroupKFold`.
