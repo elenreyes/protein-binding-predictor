@@ -189,7 +189,7 @@ Using `predict.py --pdb` directly is cleaner and more explicit, prefer it when y
  
 ## Usage
 
-There is a `setup.sh` for linux users to install the necessary packages and create the environment. 
+There is a `linux-setup.sh` for linux users to install the necessary packages and create the environment. 
 
 To execute the full pipeline, linux user can do `pipeline.sh`, though it's important to take into account that it may take about 6 ours to complete.
 
@@ -245,7 +245,7 @@ The protein appears as a grey cartoon. Predicted binding residues are colored re
 
 ## Easy Predict & Visualization
 
-For linux users, there is a file named `setup.sh` to intall and create the virtual environment to run the code. Afterwards, use the predict.py command to predict your protein's binding site. 
+For linux users, there is a file named `linux-setup.sh` to intall and create the virtual environment to run the code. Afterwards, use the predict.py command to predict your protein's binding site. 
 Another option is to run: python `binding_site_gui.py`, which opens a little interface in which you can choose the protein from your files to predict, and it opens PyMOL once predicted if intalled and in path (your own path can be added to `binding_site_gui.py` if not in there)
 
 # Google Colab
