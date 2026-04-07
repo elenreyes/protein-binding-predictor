@@ -110,7 +110,7 @@ Computes 39 features per residue organized in 5 groups:
 |-------|----------|------|
 | Amino acid properties | hydrophobic, hydrophilic, hydrophatyIndex, aliphatic, aromatic, sulfur, hydroxyl, basic, acidic, amide, posCharge, negCharge, hBondDonor, hBondAcceptor, hBondDonorAcceptor, polar, ionizable | Lookup table |
 | Geometric (neighbourhood) | atoms, atomDensity, atomC, atomO, atomN, hDonorAtoms, hAcceptorAtoms, protrusion | KDTree (scipy) |
-| Secondary structure + flexibility | ss_helix, ss_sheet, ss_coil, bfactor, rsa | DSSP (BioPython) |
+| Secondary structure + flexibility | ss_helix, ss_sheet, ss_coil, bfactor, rsa | DSSP |
 | Solvent accessibility | sasa_total, sasa_relative | FreeSASA |
 | VolSite + atomic hydrophobicity | vsAromatic, vsCation, vsAnion, vsHydrophobic, vsAcceptor, vsDonor, atomicHydrophobicity | Lookup table |
  
